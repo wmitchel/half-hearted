@@ -17,12 +17,21 @@ const BannerImage = styled(Img)`
   height: 100vh;
 `
 
+const BannerContent = styled.div`
+    position: absolute;
+    bottom: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
 const Banner = ({children}) => {
   const data = useStaticQuery(graphql`
     query {
-        banner: file(relativePath: { eq: "banner.jpg" }) {
+        banner: file(relativePath: { eq: "banner.jpeg" }) {
             childImageSharp {
-                fluid(quality: 100) {
+                fluid(maxWidth: 2000) {
                     ...GatsbyImageSharpFluid
                 }
             }
@@ -38,7 +47,10 @@ const Banner = ({children}) => {
     <Theme>
       <BannerComponent>
         <BannerImage imgStyle={imageStyle} fluid={data.banner.childImageSharp.fluid} />
-        {children}
+        <BannerContent>
+            stuff here
+            {children}
+        </BannerContent>
       </BannerComponent>
     </Theme>
   )

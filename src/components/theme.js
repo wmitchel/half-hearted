@@ -4,8 +4,8 @@ import { ThemeProvider } from "styled-components"
 const theme = {
   colors: {
     powderWhite: "#FFFDF9",
-    onyx: "#000000",
-    // onyx: "#36313D",
+    // onyx: "#000000",
+    onyx: "#36313D",
   },
   fonts: ["sans-serif", "Roboto"],
   fontSizes: {
