@@ -4,6 +4,22 @@ module.exports = {
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
+  banner: {
+    links: [
+      {
+        label: 'Apple Music',
+        url: 'https://www.facebook.com/OfficialHalfHearted/'
+      },
+      {
+        label: 'Spotify',
+        url: 'http://www.halfhearted.us/'
+      }
+    ],
+    headingText: 'Half Hearted',
+    subheadingText: 'New Single Eighteen Out Now!'
+  },
+  links: {
+  },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
