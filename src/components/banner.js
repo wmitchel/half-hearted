@@ -11,6 +11,18 @@ const BannerComponent = styled.div`
   width: 100%;
   background: ${props => props.theme.colors.onyx};
   opacity: 1;
+
+  &:before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      rgb(54,49,61,0.125),
+      rgb(54,49,61,0.125)
+    );
+  }
 `
 
 const BannerImage = styled(Img)`
@@ -19,31 +31,34 @@ const BannerImage = styled(Img)`
 
 const BannerContent = styled.div`
   position: absolute;
-  bottom: 25%;
+  top: 50%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  z-index: 2;
 
-  @media ${props => props.theme.breakpoints.mobile} {
+  @media ${props => props.theme.breakpoints.tinyMobile} {
     flex-direction: column;
+    top: inherit;
+    bottom: 10%;
   }
 `
 
-const BannerHeadingText = styled.h1`
-  position: absolute;
-  bottom: 50%;
-  
+const BannerHeadingText = styled.h1`  
   width: 100%;
+  margin-top: 0;
   text-align: center;
+  font-size: 2.5em;
 
   color: ${props => props.theme.colors.powderWhite};
 `
 
-const BannerContentHeading = styled.h4`
+const BannerContentHeading = styled.h3`
   flex-basis: 100%;
+  margin-top: 0;
   text-align: center;
 
   color: ${props => props.theme.colors.powderWhite};
@@ -56,7 +71,7 @@ const BannerLink = styled(Link)`
   justify-content: center;
 
   padding: 0.5rem 1rem;
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
   width: 9rem;
 
   border: 2px solid ${props => props.theme.colors.powderWhite};
@@ -77,6 +92,42 @@ const BannerLink = styled(Link)`
   text-align: center;
 `
 
+const MerchBannerLink = styled(Link)`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
+  width: 9rem;
+
+  border: 2px solid ${props => props.theme.colors.powderWhite};
+  border-radius: 6px;
+
+  color: ${props => props.theme.colors.powderWhite};
+  background: rgb(224,193,232,0.5);
+  transition: background-color 0.5s ease;
+  transition: color 0.35s ease;
+
+  &:hover {
+    color: ${props => props.theme.colors.onyx};
+    background: rgb(224,193,232,1);
+  }
+
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  
+  order: 3;
+
+  @media ${props => props.theme.breakpoints.tablet} {
+    order: 2;
+  }
+`
+
 const Banner = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -88,14 +139,16 @@ const Banner = () => {
             }
         }
         site {
-          banner {
-            links {
-              label
-              url
+            siteMetadata {
+            banner {
+                links {
+                label
+                url
+                }
+                headingText
+                subheadingText
             }
-            headingText
-            subheadingText
-          }
+            }
         }
     }
   `)
@@ -105,7 +158,8 @@ const Banner = () => {
       objectPosition: `top center`
   }
 
-  const bannerButtons = data.site.banner.links.map(({label, url}) => {
+  let order = 0;
+  const bannerButtons = data.site.siteMetadata.banner.links.map(({label, url}) => {
     return (
       <BannerLink to={url}>
         {label}
@@ -118,14 +172,17 @@ const Banner = () => {
     <Theme>
       <BannerComponent>
         <BannerImage imgStyle={imageStyle} fluid={data.banner.childImageSharp.fluid} />
-        <BannerHeadingText>
-          {data.site.banner.headingText}
-        </BannerHeadingText>
         <BannerContent>
+          <BannerHeadingText>
+            {data.site.siteMetadata.banner.headingText}
+          </BannerHeadingText>
           <BannerContentHeading>
-            {data.site.banner.subheadingText}
+            {data.site.siteMetadata.banner.subheadingText}
           </BannerContentHeading>
           {bannerButtons}
+          <MerchBannerLink to='https://halfheartedband.bigcartel.com/'>
+            Merch
+          </MerchBannerLink>
         </BannerContent>
       </BannerComponent>
     </Theme>

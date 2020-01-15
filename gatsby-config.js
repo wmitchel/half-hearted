@@ -3,22 +3,20 @@ module.exports = {
     title: `Half Hearted`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
-  },
-  banner: {
-    links: [
-      {
-        label: 'Apple Music',
-        url: 'https://www.facebook.com/OfficialHalfHearted/'
-      },
-      {
-        label: 'Spotify',
-        url: 'http://www.halfhearted.us/'
-      }
-    ],
-    headingText: 'Half Hearted',
-    subheadingText: 'New Single Eighteen Out Now!'
-  },
-  links: {
+    banner: {
+      links: [
+        {
+          label: 'Apple Music',
+          url: 'https://www.facebook.com/OfficialHalfHearted/'
+        },
+        {
+          label: 'Spotify',
+          url: 'http://www.halfhearted.us/'
+        }
+      ],
+      headingText: 'Half Hearted',
+      subheadingText: 'New Single Eighteen Out Now!'
+    },
   },
   plugins: [
     `gatsby-plugin-styled-components`,
