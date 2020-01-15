@@ -43,7 +43,7 @@ const BannerContent = styled.div`
   @media ${props => props.theme.breakpoints.tinyMobile} {
     flex-direction: column;
     top: inherit;
-    bottom: 10%;
+    bottom: 20%;
   }
 `
 
