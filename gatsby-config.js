@@ -7,11 +7,11 @@ module.exports = {
       links: [
         {
           label: 'Apple Music',
-          url: 'https://www.facebook.com/OfficialHalfHearted/'
+          url: 'https://geo.music.apple.com/us/album/eighteen-single/1455532419?mt=1&app=music'
         },
         {
           label: 'Spotify',
-          url: 'http://www.halfhearted.us/'
+          url: 'https://open.spotify.com/album/4cceofRtIk65FnVqCe7oSq?highlight=spotify:track:1txAgsB81RZdCSXQ6CArlu'
         }
       ],
       headingText: 'Half Hearted',
