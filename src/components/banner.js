@@ -14,14 +14,11 @@ const BannerComponent = styled.div`
 
   &:before {
     z-index: 1;
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     width: 100%;
-    background: linear-gradient(
-      rgb(54,49,61,0.125),
-      rgb(54,49,61,0.125)
-    );
+    background: linear-gradient(rgb(54, 49, 61, 0.125), rgb(54, 49, 61, 0.125));
   }
 `
 
@@ -47,7 +44,7 @@ const BannerContent = styled.div`
   }
 `
 
-const BannerHeadingText = styled.h1`  
+const BannerHeadingText = styled.h1`
   width: 100%;
   margin-top: 0;
   text-align: center;
@@ -78,11 +75,39 @@ const BannerLink = styled(Link)`
   border-radius: 6px;
 
   color: ${props => props.theme.colors.powderWhite};
-  background: rgb(54,49,61,0.5);
+  background: rgb(54, 49, 61, 0.5);
   transition: background-color 0.5s ease;
 
   &:hover {
-    background: rgb(54,49,61,1);
+    background: rgb(54, 49, 61, 1);
+  }
+
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+`
+
+const BannerLinkHref = styled.a`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
+  width: 9rem;
+
+  border: 2px solid ${props => props.theme.colors.powderWhite};
+  border-radius: 6px;
+
+  color: ${props => props.theme.colors.powderWhite};
+  background: rgb(54, 49, 61, 0.5);
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background: rgb(54, 49, 61, 1);
   }
 
   text-decoration: none;
@@ -106,13 +131,13 @@ const MerchBannerLink = styled(Link)`
   border-radius: 6px;
 
   color: ${props => props.theme.colors.powderWhite};
-  background: rgb(224,193,232,0.5);
+  background: rgb(224, 193, 232, 0.5);
   transition: background-color 0.5s ease;
   transition: color 0.35s ease;
 
   &:hover {
     color: ${props => props.theme.colors.onyx};
-    background: rgb(224,193,232,1);
+    background: rgb(224, 193, 232, 1);
   }
 
   text-decoration: none;
@@ -120,7 +145,43 @@ const MerchBannerLink = styled(Link)`
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
-  
+
+  order: 3;
+
+  @media ${props => props.theme.breakpoints.tablet} {
+    order: 2;
+  }
+`
+
+const MerchBannerLinkHref = styled.a`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
+  width: 9rem;
+
+  border: 2px solid ${props => props.theme.colors.powderWhite};
+  border-radius: 6px;
+
+  color: ${props => props.theme.colors.powderWhite};
+  background: rgb(224, 193, 232, 0.5);
+  transition: background-color 0.5s ease;
+  transition: color 0.35s ease;
+
+  &:hover {
+    color: ${props => props.theme.colors.onyx};
+    background: rgb(224, 193, 232, 1);
+  }
+
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+
   order: 3;
 
   @media ${props => props.theme.breakpoints.tablet} {
@@ -131,47 +192,46 @@ const MerchBannerLink = styled(Link)`
 const Banner = () => {
   const data = useStaticQuery(graphql`
     query {
-        banner: file(relativePath: { eq: "banner.jpeg" }) {
-            childImageSharp {
-                fluid(maxWidth: 2000) {
-                    ...GatsbyImageSharpFluid
-                }
-            }
+      banner: file(relativePath: { eq: "banner.jpeg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
         }
-        site {
-            siteMetadata {
-            banner {
-                links {
-                label
-                url
-                }
-                headingText
-                subheadingText
+      }
+      site {
+        siteMetadata {
+          banner {
+            links {
+              label
+              url
             }
-            }
+            headingText
+            subheadingText
+          }
         }
+      }
     }
   `)
 
-
   const imageStyle = {
-      objectPosition: `top center`
+    objectPosition: `top center`,
   }
 
-  let order = 0;
-  const bannerButtons = data.site.siteMetadata.banner.links.map(({label, url}) => {
-    return (
-      <BannerLink to={url}>
-        {label}
-      </BannerLink>
-    )
-  });
-
+  let order = 0
+  const bannerButtons = data.site.siteMetadata.banner.links.map(
+    ({ label, url }) => {
+      return <BannerLinkHref href={url}>{label}</BannerLinkHref>
+    }
+  )
 
   return (
     <Theme>
       <BannerComponent>
-        <BannerImage imgStyle={imageStyle} fluid={data.banner.childImageSharp.fluid} />
+        <BannerImage
+          imgStyle={imageStyle}
+          fluid={data.banner.childImageSharp.fluid}
+        />
         <BannerContent>
           <BannerHeadingText>
             {data.site.siteMetadata.banner.headingText}
@@ -180,9 +240,9 @@ const Banner = () => {
             {data.site.siteMetadata.banner.subheadingText}
           </BannerContentHeading>
           {bannerButtons}
-          <MerchBannerLink to='https://halfheartedband.bigcartel.com/'>
+          <MerchBannerLinkHref href="https://halfheartedband.bigcartel.com/">
             Merch
-          </MerchBannerLink>
+          </MerchBannerLinkHref>
         </BannerContent>
       </BannerComponent>
     </Theme>
