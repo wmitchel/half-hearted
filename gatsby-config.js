@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Half Hearted`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `The place for all things Half Hearted; A band out of Hartford, CT`,
+    author: `Half Hearted`,
     banner: {
       links: [
         {
@@ -17,6 +17,9 @@ module.exports = {
       headingText: 'Half Hearted',
       subheadingText: 'New Single Eighteen Out Now!'
     },
+    footer: {
+      
+    }
   },
   plugins: [
     `gatsby-plugin-styled-components`,
