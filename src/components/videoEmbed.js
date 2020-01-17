@@ -49,7 +49,7 @@ const VideoEmbed = props => {
           src="https://www.youtube-nocookie.com/embed/hC825Qtgyy0"
           frameborder="0"
           allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </VideoEmbedComponent>
     </Theme>

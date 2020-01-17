@@ -17,6 +17,9 @@ module.exports = {
       headingText: 'Half Hearted',
       subheadingText: 'New Single Eighteen Out Now!'
     },
+    footer: {
+      
+    }
   },
   plugins: [
     `gatsby-plugin-styled-components`,
