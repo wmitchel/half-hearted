@@ -4,13 +4,24 @@ import Theme from "./theme.js"
 import { useStaticQuery, graphql } from "gatsby"
 
 const FooterContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   background-color: #26272b;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 10%;
   font-size: 15px;
   line-height: 24px;
   color: #737373;
+
+  &:after {
+    content: "";
+    width: 80%;
+    height: 1px;
+    background: #bbb;
+    position: absolute;
+    top: -1px;
+    opacity: 0.5;
+  }
 
   @media ${props => props.theme.breakpoints.tinyMobile} {
     flex-direction: column-reverse;
