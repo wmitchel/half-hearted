@@ -6,14 +6,25 @@ import { useStaticQuery, graphql } from "gatsby"
 const VideoEmbedComponent = styled.div`
   display: flex;
   justify-content: center;
-  background: #373A4A;
+  background: #26272b;
+  // background: #373A4A;
   padding: 5% 0;
 
   iframe {
-    width: 100%;
-    height: 100vh;
-    max-height: 315px;
-    max-width: 750px;
+    width: 50%;
+    height: 50vh;
+
+    @media ${props => props.theme.breakpoints.mobile} {
+      width: 100%;
+    }
+
+    @media ${props => props.theme.breakpoints.tablet} {
+      width: 75%;
+    }
+
+    @media ${props => props.theme.breakpoints.desktop} {
+      width: 50%;
+    }
   }
 `
 
