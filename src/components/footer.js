@@ -19,21 +19,19 @@ const FooterContainer = styled.div`
 `
 
 const FooterText = styled.div`
-a
-{
-  color:#737373;
-  text-decoration: none;
-}
-a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-p {
+  a {
+    color: #737373;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #3366cc;
+    text-decoration: none;
+  }
+  p {
     @media ${props => props.theme.breakpoints.tinyMobile} {
-        text-align: center;
+      text-align: center;
     }
-}
+  }
 `
 
 const SocialIcons = styled.ul`
@@ -41,16 +39,18 @@ const SocialIcons = styled.ul`
   margin: 0;
   list-style: none;
   display: flex;
-  align-items: center;s
-  li {
-    display: inline-block;
+  align-items: center;
+  @media ${props => props.theme.breakpoints.tinyMobile} {
+    flex-wrap: wrap;
   }
-  li.title {
-    margin-right: 15px;
-    text-transform: uppercase;
-    color: #96a2b2;
-    font-weight: 700;
-    font-size: 13px;
+
+  li {
+    @media ${props => props.theme.breakpoints.tinyMobile} {
+      display: flex;
+      flex-basis: 33%;
+      justify-content: center;
+      margin-bottom: 01rem;
+    }
   }
   a {
     background-color: #eceeef;
@@ -90,16 +90,16 @@ const SocialIcons = styled.ul`
     background-color: #00aced;
   }
   a.instagram:hover {
-    background-color: #C13584;
+    background-color: #c13584;
   }
   a.apple:hover {
-    background-color: #019CDC;
+    background-color: #019cdc;
   }
   a.spotify:hover {
-    background-color: #1DB954;
+    background-color: #1db954;
   }
   a.youtube:hover {
-    background-color: #FF0000;
+    background-color: #ff0000;
   }
 `
 
@@ -141,13 +141,14 @@ const Footer = props => {
     <Theme>
       <FooterContainer>
         <FooterText>
-          <p class="copyright-text">
-            Half Hearted &copy; 2020
-          </p>
+          <p class="copyright-text">Half Hearted &copy; 2020</p>
         </FooterText>
         <SocialIcons className="social-icons">
           <li>
-            <a className="facebook" href="https://www.facebook.com/OfficialHalfHearted/">
+            <a
+              className="facebook"
+              href="https://www.facebook.com/OfficialHalfHearted/"
+            >
               <i className="fab fa-facebook"></i>
             </a>
           </li>
@@ -157,22 +158,34 @@ const Footer = props => {
             </a>
           </li>
           <li>
-            <a className="instagram" href="https://www.instagram.com/halfhearted_ct">
+            <a
+              className="instagram"
+              href="https://www.instagram.com/halfhearted_ct"
+            >
               <i className="fab fa-instagram"></i>
             </a>
           </li>
           <li>
-            <a className="apple" href="https://www.instagram.com/halfhearted_ct">
+            <a
+              className="apple"
+              href="https://www.instagram.com/halfhearted_ct"
+            >
               <i className="fab fa-apple"></i>
             </a>
           </li>
           <li>
-            <a className="spotify" href="https://www.instagram.com/halfhearted_ct">
+            <a
+              className="spotify"
+              href="https://www.instagram.com/halfhearted_ct"
+            >
               <i className="fab fa-spotify"></i>
             </a>
           </li>
           <li>
-            <a className="youtube" href="https://www.instagram.com/halfhearted_ct">
+            <a
+              className="youtube"
+              href="https://www.instagram.com/halfhearted_ct"
+            >
               <i className="fab fa-youtube"></i>
             </a>
           </li>
