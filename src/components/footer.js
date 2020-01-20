@@ -112,6 +112,9 @@ const SocialIcons = styled.ul`
   a.youtube:hover {
     background-color: #ff0000;
   }
+  a > span {
+    display: none;
+  }
 `
 
 const Footer = props => {
@@ -148,6 +151,8 @@ const Footer = props => {
     document.body.appendChild(script)
   }, [])
 
+  const appleMusicLink = encodeURI('https://geo.music.apple.com/us/artist/half-hearted/918663060?mt=1&app=music');
+
   return (
     <Theme>
       <FooterContainer>
@@ -161,11 +166,13 @@ const Footer = props => {
               href="https://www.facebook.com/OfficialHalfHearted/"
             >
               <i className="fab fa-facebook"></i>
+              <span>Facebook</span>
             </a>
           </li>
           <li>
             <a className="twitter" href="https://twitter.com/HalfHearted_CT">
               <i className="fab fa-twitter"></i>
+              <span>Twitter</span>
             </a>
           </li>
           <li>
@@ -174,30 +181,34 @@ const Footer = props => {
               href="https://www.instagram.com/halfhearted_ct"
             >
               <i className="fab fa-instagram"></i>
+              <span>Instagram</span>
             </a>
           </li>
           <li>
             <a
               className="apple"
-              href="https://www.instagram.com/halfhearted_ct"
+              href={appleMusicLink}
             >
               <i className="fab fa-apple"></i>
+              <span>Apple music</span>
             </a>
           </li>
           <li>
             <a
               className="spotify"
-              href="https://www.instagram.com/halfhearted_ct"
+              href="https://open.spotify.com/artist/3Y2pAjdqF92ZDZ7gcAvgxQ"
             >
               <i className="fab fa-spotify"></i>
+              <span>Spotify</span>
             </a>
           </li>
           <li>
             <a
               className="youtube"
-              href="https://www.instagram.com/halfhearted_ct"
+              href="https://www.youtube.com/channel/UCbYcm0wQqgsuhVNuhONQgTw"
             >
               <i className="fab fa-youtube"></i>
+              <span>youtube</span>
             </a>
           </li>
         </SocialIcons>
