@@ -48,7 +48,7 @@ const BannerHeadingText = styled.h1`
   width: 100%;
   margin-top: 0;
   text-align: center;
-  font-size: 2.5em;
+  font-size: 3.5em;
 
   color: ${props => props.theme.colors.powderWhite};
 `
@@ -57,6 +57,7 @@ const BannerContentHeading = styled.h2`
   flex-basis: 100%;
   margin-top: 0;
   text-align: center;
+  font-size: 2rem;
 
   color: ${props => props.theme.colors.powderWhite};
 `
