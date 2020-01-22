@@ -107,6 +107,7 @@ const BannerLinkHref = styled.a`
   color: ${props => props.theme.colors.powderWhite};
   background: rgb(54, 49, 61, 0.5);
   transition: background-color 0.5s ease;
+  white-space: nowrap;
 
   &:hover {
     background: rgb(54, 49, 61, 1);
