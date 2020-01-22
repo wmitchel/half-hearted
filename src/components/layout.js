@@ -12,12 +12,15 @@ import PropTypes from "prop-types"
 // import { useSiteMetadata } from "../hooks/use-site-metadata"
 // import Header from "./header"
 import "./layout.css"
-import Footer from './footer';
+import Footer from "./footer"
+import { Helmet } from "react-helmet"
 
 const Layout = ({ children }) => {
-
   return (
     <>
+      <Helmet>
+        <link rel="stylesheet" href="https://use.typekit.net/hiv2ccq.css" />
+      </Helmet>
       <main>{children}</main>
       <Footer></Footer>
     </>

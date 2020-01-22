@@ -53,7 +53,7 @@ const BannerHeadingText = styled.h1`
   color: ${props => props.theme.colors.powderWhite};
 `
 
-const BannerContentHeading = styled.h3`
+const BannerContentHeading = styled.h2`
   flex-basis: 100%;
   margin-top: 0;
   text-align: center;

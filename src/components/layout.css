@@ -8,3 +8,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+h1 {
+  font-family: copperplate-bold, serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
+
+*:not(.fab) {
+  font-family: copperplate-bold, serif;
+  font-weight: 400;
+  font-style: normal;
+}

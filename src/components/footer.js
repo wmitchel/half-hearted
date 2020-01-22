@@ -157,7 +157,7 @@ const Footer = props => {
     <Theme>
       <FooterContainer>
         <FooterText>
-          <p class="copyright-text">Half Hearted &copy; 2020</p>
+          <p className="copyright-text">Half Hearted &copy; 2020</p>
         </FooterText>
         <SocialIcons className="social-icons">
           <li>
