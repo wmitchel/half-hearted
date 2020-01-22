@@ -67,6 +67,7 @@ const BannerLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  white-space: nowrap;
 
   padding: 0.5rem 1rem;
   margin: 0.5rem 1rem;
