@@ -67,8 +67,10 @@ const SocialIcons = styled.ul`
     background-color: #eceeef;
     color: #818a91;
     font-size: 16px;
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     margin-right: 8px;
     border-radius: 100%;
     -webkit-transition: all 0.2s linear;

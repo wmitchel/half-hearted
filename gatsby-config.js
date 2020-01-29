@@ -7,15 +7,15 @@ module.exports = {
       links: [
         {
           label: 'Apple Music',
-          url: 'https://geo.music.apple.com/us/album/eighteen-single/1455532419?mt=1&app=music'
+          url: 'https://geo.music.apple.com/us/album/half-hearted/1490397728?mt=1&app=music'
         },
         {
           label: 'Spotify',
-          url: 'https://open.spotify.com/album/4cceofRtIk65FnVqCe7oSq?highlight=spotify:track:1txAgsB81RZdCSXQ6CArlu'
+          url: 'https://open.spotify.com/track/3mkVbOUBdWBpFfsboMridi?si=9gnXrystS8OgUgQz6z20vw'
         }
       ],
       headingText: 'Half Hearted',
-      subheadingText: 'New Single Eighteen Out Now!'
+      subheadingText: 'New Single Vicious Cycle Out Now!'
     },
     footer: {
       
@@ -42,7 +42,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src\\images\\Half-Hearted-Symbol.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
