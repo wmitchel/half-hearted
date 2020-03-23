@@ -142,11 +142,10 @@ const Footer = props => {
     document.body.appendChild(script)
   }, [])
 
-  const buttonTypePattern = /(?<=fa-).*/;
-
   const socialIcons = data.contentfulLayoutFooter.iconLinks.map(
     ({ icon, url, buttonText }) => {
-      const buttonType = icon.match(buttonTypePattern);
+      const myRegexp = /fa-(.*)/;
+      const buttonType = myRegexp.exec(icon)[1];
       return (
         <li key={buttonType}>
           <a className={buttonType} href={url}>
