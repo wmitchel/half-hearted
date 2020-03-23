@@ -1,25 +1,17 @@
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
+
 module.exports = {
   siteMetadata: {
     title: `Half Hearted`,
     description: `The place for all things Half Hearted; A band out of Hartford, CT`,
     author: `Half Hearted`,
-    banner: {
-      links: [
-        {
-          label: 'Apple Music',
-          url: 'https://geo.music.apple.com/us/album/half-hearted/1490397728?mt=1&app=music'
-        },
-        {
-          label: 'Spotify',
-          url: 'https://open.spotify.com/track/3mkVbOUBdWBpFfsboMridi?si=9gnXrystS8OgUgQz6z20vw'
-        }
-      ],
-      headingText: 'Half Hearted',
-      subheadingText: 'New Single Vicious Cycle Out Now!'
-    },
-    footer: {
-      
-    }
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -43,6 +35,13 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/Half-Hearted-Symbol.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
