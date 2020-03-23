@@ -122,24 +122,13 @@ const SocialIcons = styled.ul`
 const Footer = props => {
   const data = useStaticQuery(graphql`
     query {
-      banner: file(relativePath: { eq: "banner.jpeg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2000) {
-            ...GatsbyImageSharpFluid
-          }
+      contentfulLayoutFooter {
+        iconLinks {
+          icon
+          url
+          buttonText
         }
-      }
-      site {
-        siteMetadata {
-          banner {
-            links {
-              label
-              url
-            }
-            headingText
-            subheadingText
-          }
-        }
+        copyrightText
       }
     }
   `)
@@ -153,67 +142,31 @@ const Footer = props => {
     document.body.appendChild(script)
   }, [])
 
-  const appleMusicLink = encodeURI('https://geo.music.apple.com/us/artist/half-hearted/918663060?mt=1&app=music');
+  const buttonTypePattern = /(?<=fa-).*/;
+
+  const socialIcons = data.contentfulLayoutFooter.iconLinks.map(
+    ({ icon, url, buttonText }) => {
+      const buttonType = icon.match(buttonTypePattern);
+      return (
+        <li key={buttonType}>
+          <a className={buttonType} href={url}>
+            <i className={`fab ${icon}`}></i>
+            <span>{buttonText}</span>
+          </a>
+        </li>
+      )
+    }
+  )
 
   return (
     <Theme>
       <FooterContainer>
         <FooterText>
-          <p className="copyright-text">Half Hearted &copy; 2020</p>
+          <p className="copyright-text">
+            {data.contentfulLayoutFooter.copyrightText}
+          </p>
         </FooterText>
-        <SocialIcons className="social-icons">
-          <li>
-            <a
-              className="facebook"
-              href="https://www.facebook.com/OfficialHalfHearted/"
-            >
-              <i className="fab fa-facebook"></i>
-              <span>Facebook</span>
-            </a>
-          </li>
-          <li>
-            <a className="twitter" href="https://twitter.com/HalfHearted_CT">
-              <i className="fab fa-twitter"></i>
-              <span>Twitter</span>
-            </a>
-          </li>
-          <li>
-            <a
-              className="instagram"
-              href="https://www.instagram.com/halfhearted_ct"
-            >
-              <i className="fab fa-instagram"></i>
-              <span>Instagram</span>
-            </a>
-          </li>
-          <li>
-            <a
-              className="apple"
-              href={appleMusicLink}
-            >
-              <i className="fab fa-apple"></i>
-              <span>Apple music</span>
-            </a>
-          </li>
-          <li>
-            <a
-              className="spotify"
-              href="https://open.spotify.com/artist/3Y2pAjdqF92ZDZ7gcAvgxQ"
-            >
-              <i className="fab fa-spotify"></i>
-              <span>Spotify</span>
-            </a>
-          </li>
-          <li>
-            <a
-              className="youtube"
-              href="https://www.youtube.com/channel/UCbYcm0wQqgsuhVNuhONQgTw"
-            >
-              <i className="fab fa-youtube"></i>
-              <span>youtube</span>
-            </a>
-          </li>
-        </SocialIcons>
+        <SocialIcons className="social-icons">{socialIcons}</SocialIcons>
       </FooterContainer>
     </Theme>
   )

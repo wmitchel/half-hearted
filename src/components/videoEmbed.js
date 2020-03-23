@@ -7,7 +7,6 @@ const VideoEmbedComponent = styled.div`
   display: flex;
   justify-content: center;
   background: #26272b;
-  // background: #373A4A;
   padding: 5% 0;
 
   iframe {
@@ -31,34 +30,26 @@ const VideoEmbedComponent = styled.div`
 const VideoEmbed = props => {
   const data = useStaticQuery(graphql`
     query {
-      banner: file(relativePath: { eq: "banner.jpeg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2000) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          banner {
-            links {
-              label
-              url
+      contentfulLayout {
+        contentModules {
+          ... on ContentfulLayoutVideoEmbed {
+            activeVideoEmbed {
+              videoId
             }
-            headingText
-            subheadingText
           }
         }
       }
     }
   `)
 
+  const { videoId } = data.contentfulLayout.contentModules[1].activeVideoEmbed;
+
   return (
     <Theme>
       <VideoEmbedComponent>
         <iframe
-          src="https://www.youtube-nocookie.com/embed/FbjHb1-Msgc"
-          frameborder="0"
+          src={`https://www.youtube.com/embed/${videoId}`}
+          frameBorder="0"
           allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
