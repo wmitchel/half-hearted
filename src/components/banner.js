@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import Theme from "./theme.js"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+
+import Theme from "./abstract/theme.js"
 
 const BannerComponent = styled.div`
   position: relative;
@@ -159,9 +160,17 @@ const Banner = () => {
   const bannerButtons = data.contentfulLayout.contentModules[0].buttonLinks.map(
     ({ buttonText, url, secondaryButton }) => {
       if (secondaryButton) {
-      return <MerchBannerLinkHref key={buttonText} href={url}>{buttonText}</MerchBannerLinkHref>
+        return (
+          <MerchBannerLinkHref key={buttonText} href={url}>
+            {buttonText}
+          </MerchBannerLinkHref>
+        )
       }
-      return <BannerLinkHref key={buttonText} href={url}>{buttonText}</BannerLinkHref>
+      return (
+        <BannerLinkHref key={buttonText} href={url}>
+          {buttonText}
+        </BannerLinkHref>
+      )
     }
   )
 

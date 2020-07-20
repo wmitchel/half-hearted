@@ -1,10 +1,10 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
-import styled from "styled-components"
-import Theme from "./theme.js"
-import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from "prop-types"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import styled from "styled-components"
+
+import Theme from "../abstract/theme.js"
 
 const HeaderComponent = styled.header`
   position: fixed;
@@ -42,7 +42,6 @@ const Header = ({ siteTitle }) => {
       }
     }
   `)
-
 
   return (
     <Theme>
